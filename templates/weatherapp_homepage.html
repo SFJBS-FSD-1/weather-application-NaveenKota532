@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>weatheapp homepage</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1> Search for Current Weather of a city </h1>
+<div class="col-md-6 col-md-offset-3">
+<form method="post" action="/">
+    <input type="text" name="city" placeholder="enter city name">
+    <button type="submit">SUBMIT</button>
+</form>
+</div>
+    {% if mydata.status == 200 %}
+<div class="col-md-6 col-md-offset-3">
+<h3> City: {{mydata["city"]}}</h3>
+<h3> Latitude: {{mydata["latitude"]}}</h3>
+<h3> Longitude: {{mydata["longitude"]}}</h3>
+<h3> Temperate: {{mydata["temperature"]}}</h3>
+<h3> Sunrise: {{mydata["sunrise"]}}</h3>
+<h3> Sunset: {{mydata["sunset"]}}</h3>
+        {% endif %}
+
+        {% if mydata.status == 404 %}
+    <h3> {{mydata["message"]}}</h3>
+        {% endif %}
+
+        {% if mydata.status == 400 %}
+    <h3> {{mydata["message"]}}</h3>
+        {% endif %}
+</div>
+
+</body>
+</html>
